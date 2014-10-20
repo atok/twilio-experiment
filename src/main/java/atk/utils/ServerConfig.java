@@ -14,8 +14,8 @@ public class ServerConfig {
     }
 
     @JsonCreator
-    public ServerConfig(@JsonProperty("twilioSid") String dbUri,
-                        @JsonProperty("twilioAuthToken") String dbUser,
+    public ServerConfig(@JsonProperty("dbUri") String dbUri,
+                        @JsonProperty("dbUser") String dbUser,
                         @JsonProperty("dbPassword") String dbPassword,
                         @JsonProperty("twilioSid") String twilioSid,
                         @JsonProperty("twilioAuthToken") String twilioAuthToken) {
