@@ -16,13 +16,19 @@ public class ServerConfig {
     @JsonCreator
     public ServerConfig(@JsonProperty("twilioSid") String dbUri,
                         @JsonProperty("twilioAuthToken") String dbUser,
-                        @JsonProperty("dbPassword") String dbPassword) {
+                        @JsonProperty("dbPassword") String dbPassword,
+                        @JsonProperty("twilioSid") String twilioSid,
+                        @JsonProperty("twilioAuthToken") String twilioAuthToken) {
         this.dbUri = dbUri;
         this.dbUser = dbUser;
         this.dbPassword = dbPassword;
+        this.twilioSid = twilioSid;
+        this.twilioAuthToken = twilioAuthToken;
     }
 
     public final String dbUri;
     public final String dbUser;
     public final String dbPassword;
+    public final String twilioSid;
+    public final String twilioAuthToken;
 }

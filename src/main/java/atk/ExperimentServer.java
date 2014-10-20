@@ -2,7 +2,6 @@ package atk;
 
 import atk.handlers.ErrorHandler;
 import atk.handlers.TwilioClientHandler;
-import atk.utils.LocalConfig;
 import atk.utils.ServerConfig;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
@@ -33,7 +32,7 @@ public class ExperimentServer {
         };
 
         ServerConfig config = ServerConfig.readConfig(new File("config.json"));
-        LocalConfig localConfig = LocalConfig.readConfig(new File("local.json"));
+
 
         final DataSource db = newDataSource(config.dbUri, config.dbUser, config.dbPassword);
 
@@ -46,7 +45,7 @@ public class ExperimentServer {
         resourceHandler.setCachable(value -> true);
 
         HttpHandler routingHandlers = Handlers.path()
-                .addExactPath("/twilioClient", new TwilioClientHandler(resourceHandler, localConfig.twilioSid, localConfig.twilioAuthToken))
+                .addExactPath("/twilioClient", new TwilioClientHandler(resourceHandler, config.twilioSid, config.twilioAuthToken))
                 .addExactPath("/", resourceHandler)
                 .addPrefixPath("/static", resourceHandler)
                 .addPrefixPath("/exception", exchange -> {
