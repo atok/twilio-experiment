@@ -1,6 +1,7 @@
 package atk;
 
 import atk.handlers.ErrorHandler;
+import atk.handlers.TwiMLHandler;
 import atk.handlers.TwilioClientHandler;
 import atk.utils.ServerConfig;
 import io.undertow.Handlers;
@@ -46,6 +47,7 @@ public class ExperimentServer {
 
         HttpHandler routingHandlers = Handlers.path()
                 .addExactPath("/twilioClient", new TwilioClientHandler(resourceHandler, config.twilioSid, config.twilioAuthToken))
+                .addExactPath("/twiML/app1", new TwiMLHandler())
                 .addExactPath("/", resourceHandler)
                 .addPrefixPath("/static", resourceHandler)
                 .addPrefixPath("/exception", exchange -> {
