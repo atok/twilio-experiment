@@ -30,6 +30,7 @@
 
                         Twilio.Device.connect(function (conn) {
                             $("#log").text("Successfully established call");
+                            conn.sendDigits("0000");
                         });
 
                         /* Connect to Twilio when we call this function. */
