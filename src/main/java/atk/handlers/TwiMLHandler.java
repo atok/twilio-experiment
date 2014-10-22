@@ -6,6 +6,7 @@ import com.twilio.sdk.verbs.TwiMLException;
 import com.twilio.sdk.verbs.TwiMLResponse;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
+import io.undertow.util.Headers;
 
 
 public class TwiMLHandler implements HttpHandler {
@@ -22,6 +23,7 @@ public class TwiMLHandler implements HttpHandler {
         }
 
         String responseString = response.toXML();
+        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "application/xml");
         exchange.getResponseSender().send(responseString);
     }
 }
