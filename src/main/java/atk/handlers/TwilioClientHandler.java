@@ -23,7 +23,7 @@ public class TwilioClientHandler implements HttpHandler {
 
     @Override
     public void handleRequest(HttpServerExchange exchange) throws Exception {
-        String applicationSid = "APabe7650f654fc34655fc81ae71caa3ff";
+        String applicationSid = "AP1eb7fb5eb6a720558ec327c1fce61279";
 
         TwilioCapability capability = new TwilioCapability(accountSid, authToken);
         capability.allowClientOutgoing(applicationSid);
